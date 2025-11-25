@@ -101,6 +101,12 @@ public class DownloadServlet extends HttpServlet {
             c.setPath("/"); 
             response.addCookie(c);
             
+            if (firstName == null) firstName = "";
+            Cookie c2 = new Cookie("firstNameCookie", firstName);
+            c2.setMaxAge(60 * 60 * 24 * 365 * 2);
+            c2.setPath("/");
+            response.addCookie(c2);
+            
             // Chuyển đến trang Download
             String url = "/download.jsp";
             getServletContext().getRequestDispatcher(url).forward(request, response);
